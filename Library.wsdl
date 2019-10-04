@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<wsdl:definitions name="Library" 
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+
+
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:complexType name="book">
+                <xsd:sequence>
+                    <xsd:element name="name" type="xsd:string"></xsd:element>
+                    <xsd:element name="year" type="tns:integer"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name="bookYearRequest">
+        <wsdl:part name="book" type="xsd:book"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="bookYearResponse">
+        <wsdl:part name="year" type="tns:integer"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:portType name="LibraryPort">
+        <wsdl:operation name="bookYear">
+            <wsdl:input message="tns:bookYearRequest"/>
+            <wsdl:output message="tns:bookYearResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="LibraryB" type="LibraryPort">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="bookYear">
+            <soap:operation soapAction="bookYear"/>
+            <wsdl:input>
+                <soap:body use="literal" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="Library">
+        <wsdl:port binding="LibraryB" name="BookLibrary">
+            <soap:address location="https://blackjack-soap-server.herokuapp.com/Library"/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>
