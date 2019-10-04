@@ -3,42 +3,20 @@
 const soap = require('soap')
 const url = 'https://blackjack-soap-server.herokuapp.com/Library?wsdl'
 
-class Book {
-  constructor(name = '', year = 0) {
+class Game {
+  constructor(name = '') {
     this.name = name
-    this.year = year
   }
 }
 
-let book = new Book('test 2')
+let game = new Game('test 2')
 
-let clienteInstagram = null
+soap.createClient(url, { disableCache: true }, function(err, client) {
+  if (err) throw err
+  console.log(client.describe())
+  client.gameStatus({ game }, (err, res) => {
+    if (err) throw err
 
-async function getClienteInsta() {
-  if (clienteInstagram === null) {
-    try {
-      clienteInstagram = await soap.createClientAsync(url, {
-        disableCache: true
-      })
-
-      clienteInstagram.bookYear({ book }, async (err, res) => {
-        if (err) throw err
-        console.log(res)
-      })
-    } catch (error) {
-      console.error(error)
-    }
-  }
-  return clienteInstagram
-}
-
-let aa = getClienteInsta()
-
-// aa.bookYear({ book }, async (err, res) => {
-//   if (err) throw err
-//   console.log(res)
-// })
-
-// module.exports = {
-//   getCliente: getClienteInsta()
-// }
+    console.log(res)
+  })
+})

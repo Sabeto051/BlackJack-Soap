@@ -2,29 +2,29 @@ const soap = require('soap')
 const express = require('express')
 const path = require('path')
 
-class Book {
-  constructor(name = '', year = 0) {
+class Game {
+  constructor(name = '', status = 0) {
     this.name = name
-    this.year = year
+    this.status = status
   }
 }
 
 let myService = {
-  Library: {
-    BookLibrary: {
-      bookYear: args => {
-        let book = args.book
-        books = [
-          new Book('test 1', 2011),
-          new Book('test 2', 2012),
-          new Book('test 3', 2013)
+  BlackJack: {
+    GameBlackJack: {
+      gameStatus: args => {
+        let game = args.game
+        games = [
+          new Game('test 1', 1),
+          new Game('test 2', 2),
+          new Game('test 3', 3)
         ]
 
-        findBook = bookk => {
-          return bookk.name == book.name
+        findGame = gamee => {
+          return gamee.name == game.name
         }
 
-        return { year: books.find(findBook).year }
+        return { status: games.find(findGame).status }
       }
     }
   }
