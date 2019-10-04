@@ -11,5 +11,9 @@
     "blackjack"
   ],
   "author": "Santiago Bedoya",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "soap": "^0.29.0"
+  }
 }
