@@ -43,6 +43,6 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.listen(app.get('port'), function() {
   soap.listen(app, '/Library', myService, xml, function() {
     console.log(`server initialized on port ${app.get('port')}`)
-    console.log('asdf')
+    console.log('aswddf')
   })
 })
