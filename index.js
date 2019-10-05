@@ -5,7 +5,7 @@ let cliente = Client.apostar();
 let cliente = Client.OcultarCarta();
 let cliente = Client.MostrarCarta();
 let cliente = Client.Plantar();
-
+let cliente = Client.Actualizar(;)
 /*var casa = []
 var jug1 = []
 var victorioso = 0
