@@ -1,25 +1,7 @@
 'strict'
 
 const soap = require('soap')
-const url = 'http://localhost:3000/Library?wsdl'
-
-// class Game {
-//   constructor(name = '') {
-//     this.name = name
-//   }
-// }
-
-// let game = new Game('test 1')
-
-// soap.createClient(url, { disableCache: true }, function(err, client) {
-//   if (err) throw err
-//   // console.log(client.describe())
-//   client.gameStatus({ game }, (err, res) => {
-//     if (err) throw err
-
-//     console.log(res)
-//   })
-// })
+const url = 'https://blackjack-soap-server.herokuapp.com/Library?wsdls'
 
 let myclient = null
 async function getCliente() {
@@ -32,14 +14,6 @@ async function getCliente() {
   }
   return myclient
 }
-
-// getCliente().then(c => {
-//   c.gameStatus({ game }, (err, res) => {
-//     if (err) throw err
-
-//     console.log(res)
-//   })
-// })
 
 module.exports = {
   getCliente: async () => await getCliente()
