@@ -1,11 +1,29 @@
+import { isNull } from "util";
 
-let cliente = Client.agregarCarta();
-let cliente = Client.verificarGanador();
-let cliente = Client.apostar();
-let cliente = Client.OcultarCarta();
+//let cliente = Client.Plantar();
+//let cliente = Client.Actualizar();
+
+var token;
+Apuseta=cliente;
+async function EntrarAJuego(Apuesta){ 
+  try{
+let cliente = await cliente.conectarJugador({apuesta: Apuseta}, (err,res)=>{
+  if (err) throw err
+    console.log(res)
+})
+   } catch (error){
+     alert()
+   
+}
+function Inicio(){
+
+  $('.btn-move').prop('disabled', false)
+  $('.btn-bet').prop('disabled', true)
+  let cliente = Client.agregarCarta(); 
+  let cliente = Client.agregarCarta();
+}
 let cliente = Client.MostrarCarta();
-let cliente = Client.Plantar();
-let cliente = Client.Actualizar(;)
+
 /*var casa = []
 var jug1 = []
 var victorioso = 0
@@ -17,7 +35,6 @@ var suits = {
   TREBOL: '&#9827',
   PICA: '&#9824'
 }
-
 //funcion que genera 4 numeros aleatorios y los imprime en los parrafos demo1, 2, 3 y 4
 function myFunction() {
   $('.btn-move').prop('disabled', false)
