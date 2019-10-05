@@ -7,11 +7,11 @@
   </head>
   <body>
     <div>
-    <!--  <script src="./index.js"></script> este como lo cambiamos-->
+     <script src="./index.js"></script> este como lo cambiamos
       <!-- El titulo de la pagina-->
       <p>Blackjack</p>
     
-      <button onclick="myFunction()">Unirse al juego</button>  
+      <button onclick=>  <!--en el onclick manda una solicitud para que el servidor retorne un token --> Unirse al juego</button>  
       <div id="container">
 
       <!-- Los espacios donde se muestran los numeros de las cartas-->
@@ -30,20 +30,19 @@
          </div>
        </div>
       <div class="rows">
-          <button onclick="cartaAdcional()" disabled="true" id="cartaAdcional" class="btn-move">carta adicional</button>
-          <button onclick="plantar()" disabled="true" id="plantar"  class="btn-move">plantar</button>
+        <!--  <button onclick="cartaAdcional()" disabled="true" id="cartaAdcional" class="btn-move">carta adicional</button> -->
+        <!--  <button onclick="plantar()" disabled="true" id="plantar"  class="btn-move">plantar</button> -->
       
           <div>
+            <p>Total apostado
             <span id="Apuesta" >0</span>
+            </p>
           </div>
           <div >
             <button id="Apostar10" class="btn-bet" onclick="apostar(10)">10</button>
             <button id="Apostar20" class="btn-bet" onclick="apostar(20)">20</button>
             <button id="Apostar50" class="btn-bet" onclick="apostar(50)">50</button>
             <button id="Apostar100" class="btn-bet" onclick="apostar(100)">100</button>
-          </div>
-          <div>
-            <button id="Limpiar" class="btn-bet" onclick="limpiarapuesta()">Limpiar apuesta</button>
           </div>
       </div>
 
