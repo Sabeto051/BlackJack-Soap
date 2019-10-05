@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--Libreria de Jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div>
+    <!--  <script src="./index.js"></script> este como lo cambiamos-->
+      <!-- El titulo de la pagina-->
+      <p>Blackjack</p>
+    
+      <button onclick="myFunction()">Unirse al juego</button>  
+      <div id="container">
+
+      <!-- Los espacios donde se muestran los numeros de las cartas-->
+      <div id="casa" class="rows"> 
+        <span id="casa1" class="cards rot-uno"></span>
+        <span id="casa2" class="cards rot-dos"></span>
+      </div>
+      <div id="container">
+         <div id="jugador1" class="rows">
+           <span id="jugador11"class="cards"></span>
+           <span id="jugador12"class="cards"></span>
+         </div>
+         <div id="jugador2" class="rows">
+           <span id="jugador21"class="cards"></span>
+           <span id="jugador22"class="cards"></span>
+         </div>
+       </div>
+      <div class="rows">
+          <button onclick="cartaAdcional()" disabled="true" id="cartaAdcional" class="btn-move">carta adicional</button>
+          <button onclick="plantar()" disabled="true" id="plantar"  class="btn-move">plantar</button>
+      
+          <div>
+            <span id="Apuesta" >0</span>
+          </div>
+          <div >
+            <button id="Apostar10" class="btn-bet" onclick="apostar(10)">10</button>
+            <button id="Apostar20" class="btn-bet" onclick="apostar(20)">20</button>
+            <button id="Apostar50" class="btn-bet" onclick="apostar(50)">50</button>
+            <button id="Apostar100" class="btn-bet" onclick="apostar(100)">100</button>
+          </div>
+          <div>
+            <button id="Limpiar" class="btn-bet" onclick="limpiarapuesta()">Limpiar apuesta</button>
+          </div>
+      </div>
+
+    </div>
+  </body>
+</html>
