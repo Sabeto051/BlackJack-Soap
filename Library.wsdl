@@ -32,6 +32,14 @@
         <wsdl:part name="token" type="xsd:string"></wsdl:part>
     </wsdl:message>
 
+    <wsdl:message name="newCartaRequest">
+        <wsdl:part name="playerID" type="tns:integer"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="newCartaResponse">
+        <wsdl:part name="playerID" type="tns:integer"></wsdl:part>
+        <wsdl:part name="tipoCarta" type="xsd:string"></wsdl:part>
+    </wsdl:message>
+
     <wsdl:portType name="BlackJackPort">
         <wsdl:operation name="gameStatus">
             <wsdl:input message="tns:gameStatusRequest"/>
