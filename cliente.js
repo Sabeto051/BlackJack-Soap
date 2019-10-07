@@ -15,6 +15,35 @@ async function getCliente() {
   return myclient
 }
 
+async function pedirCarta() {
+  if (myclient != null) {
+    try {
+      myclient.newCarta({ token: myclient.token }).then(result => {
+        console.log(result.result)
+      })
+    } catch {
+      console.error
+    }
+  } else {
+    alert("ERROR: no hay cliente")
+  }
+}
+
+async function plantar() {
+  if (myclient != null) {
+    try {
+      myclient.plantar({ token: myclient.token }).then(result => {
+        console.log(result.result)
+      })
+    } catch {
+      console.error
+    }
+  } else {
+    alert("ERROR: no hay cliente")
+  }
+}
+
+
 module.exports = {
   getCliente: async () => await getCliente()
 }

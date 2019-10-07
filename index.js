@@ -31,6 +31,8 @@ function Inicio() {
 }
 let cliente = Client.MostrarCarta()
 
+
+
 /*var casa = []
 var jug1 = []
 var victorioso = 0
@@ -120,7 +122,7 @@ function agregarSpan(parent, arr) {
   // guardo la ultitma posicion
   var last = arr.length - 1
   decorarCarta(spanId, arr, last);
-  
+
 }
 function decorarCarta(spanId, arr, last) {
   // Se le añade el número de la carta al nuevo Span
