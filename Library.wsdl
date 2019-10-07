@@ -33,11 +33,18 @@
     </wsdl:message>
 
     <wsdl:message name="newCartaRequest">
-        <wsdl:part name="playerID" type="tns:integer"></wsdl:part>
+        <wsdl:part name="token" type="xsd:string"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="newCartaResponse">
-        <wsdl:part name="playerID" type="tns:integer"></wsdl:part>
+        <wsdl:part name="token" type="xsd:string"></wsdl:part>
         <wsdl:part name="tipoCarta" type="xsd:string"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="plantarRequest">
+        <wsdl:part name="token" type="xsd:string"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="plantarResponse">
+        <wsdl:part name="token" type="xsd:string"></wsdl:part>
     </wsdl:message>
 
     <wsdl:portType name="BlackJackPort">
@@ -49,6 +56,16 @@
         <wsdl:operation name="conectarJugador">
             <wsdl:input message="tns:conectarJugadorRequest"/>
             <wsdl:output message="tns:conectarJugadorResponse"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="newCarta">
+            <wsdl:input message="tns:newCartaRequest"/>
+            <wsdl:output message="tns:newCartaResponse"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="plantar">
+            <wsdl:input message="tns:plantarRequest"/>
+            <wsdl:output message="tns:plantarResponse"/>
         </wsdl:operation>
     </wsdl:portType>
 
@@ -73,6 +90,27 @@
                 <soap:body use="literal" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
             </wsdl:output>
         </wsdl:operation>
+
+        <wsdl:operation name="newCarta">
+            <soap:operation soapAction="newCarta"/>
+            <wsdl:input>
+                <soap:body use="literal" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="plantar">
+            <soap:operation soapAction="plantar"/>
+            <wsdl:input>
+                <soap:body use="literal" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:output>
+        </wsdl:operation>
+
     </wsdl:binding>
 
     <wsdl:service name="BlackJack">
