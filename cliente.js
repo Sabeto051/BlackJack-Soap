@@ -14,7 +14,7 @@ async function getCliente() {
   }
   return myclient
 }
-
+/*
 async function pedirCarta() {
   if (myclient != null) {
     try {
@@ -127,3 +127,4 @@ module.exports = {
   getCliente: async () => await getCliente()
 }
 
+*/

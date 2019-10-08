@@ -11,11 +11,11 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#608448', endColorstr='#1c3f03', GradientType=1 );
 
 }
-/*
+
 .rot-uno{
      transform: rotate(-2deg);
     
-  }
+  }/*
 .rot-dos{
      transform: rotate(1deg);
   }
