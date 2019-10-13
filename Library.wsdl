@@ -69,8 +69,7 @@
 
     <wsdl:service name="BlackJack">
         <wsdl:port binding="BlackJackB" name="GameBlackJack">
-            <!-- <soap:address location="https://blackjack-soap-server.herokuapp.com/Library"/> -->
-            <soap:address location="http://localhost:3000/Library"/>
+            <soap:address location="https://blackjack-soap-server.herokuapp.com/Library"/>
         </wsdl:port>
     </wsdl:service>
 
