@@ -1,7 +1,7 @@
 const soap = require('soap')
 const express = require('express')
 const path = require('path')
-const tokenizator = require('crypto')
+const utilities = require('./utils/utilities')
 
 class Game {
   constructor(name = '', status = 0) {
@@ -9,8 +9,6 @@ class Game {
     this.status = status
   }
 }
-
-let jugadores = []
 
 let myService = {
   BlackJack: {
@@ -31,10 +29,8 @@ let myService = {
       },
 
       conectarJugador: async args => {
-        let token = await tokenizator.randomBytes(20)
-        token = token.toString('hex')
-
-        return { token: token }
+        let token = utilities.conectarJugador(args.apuesta)
+        return { token }
       }
     }
   }
@@ -53,6 +49,6 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.listen(app.get('port'), function() {
   soap.listen(app, '/Library', myService, xml, function() {
     console.log(`server initialized on port ${app.get('port')}`)
-    console.log('aswddf')
+    console.log('wow')
   })
 })
