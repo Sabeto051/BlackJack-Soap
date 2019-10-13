@@ -1,7 +1,7 @@
 'strict'
 
 const soap = require('soap')
-const url = 'http://localhost:3000/Library?wsdl'
+const url = 'https://blackjack-soap-server.herokuapp.com/Library?wsdl'
 
 class Game {
   constructor(name = '') {
