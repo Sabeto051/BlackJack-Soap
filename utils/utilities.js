@@ -1,10 +1,11 @@
 const tokenizator = require('crypto')
 
-class carta {
+class Carta {
   constructor() {
     this.id = Math.floor(Math.random() * 52 + 1)
     this.valor = ((this.id - 1) % 13) + 1
     this.valor = this.valor > 10 ? 10 : this.valor
+    this.valor = this.valor === 1 ? 11 : this.valor
   }
 }
 
@@ -83,7 +84,7 @@ function empezarJuego() {
   server no pinta carta, lo hace el cliente
 */
 function newCarta() {
-  let carta = Math.floor(Math.random() * 52 + 1)
+  return new Carta()
 }
 
 /* 
@@ -91,12 +92,31 @@ function newCarta() {
 */
 function contarCartas(cartas) {
   let suma = 0
+  let ases = 0
   let contador = carta => {
-    let valor = carta
-    suma += carta
+    suma += carta.valor
+  }
+  let numAses = carta => {
+    if (carta.id === 1) {
+      ases++
+    }
   }
 
   cc.map(contador)
+
+  if (suma > 21) {
+    cartas.map(numAses)
+
+    let i = 0
+    while (ases > 0 && suma > 21 && i < cartas.length) {
+      if (cartas[i].id === 1) {
+        cartas[i].valor = 1
+        ases--
+        cartas.map(contador)
+      }
+      i++
+    }
+  }
 
   return suma
 }
