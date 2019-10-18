@@ -1,5 +1,13 @@
 const tokenizator = require('crypto')
 
+class carta {
+  constructor() {
+    this.id = Math.floor(Math.random() * 52 + 1)
+    this.valor = ((this.id - 1) % 13) + 1
+    this.valor = this.valor > 10 ? 10 : this.valor
+  }
+}
+
 let jugadores = []
 
 let juegoStatus = {
@@ -62,7 +70,17 @@ function newCarta() {
 /* 
   Conteo de cartas
 */
-function contarCartas() {}
+function contarCartas(cartas) {
+  let suma = 0
+  let contador = carta => {
+    let valor = carta
+    suma += carta
+  }
+
+  cc.map(contador)
+
+  return suma
+}
 
 /* 
   verifica si un jugador está en el turno actual
