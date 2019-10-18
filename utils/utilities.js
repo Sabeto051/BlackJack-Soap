@@ -49,7 +49,23 @@ function conteoJuegoInicio() {
 /* 
   Reparte y crea las cartas de jugadores y casa
 */
-function empezarJuego() {}
+function empezarJuego() {
+
+  //Reparte dos cartas a cada jugador
+  jugadores.forEach(element => {
+    let carta1 = newCarta();
+    let carta2 = newCarta();
+    element.cartas.push(carta1);
+    element.cartas.push(carta2);
+    element.numeroCartas += 2;
+  });
+
+  //reparte las dos cartas de la casa
+  let cartacasa1 = newCarta();
+  let cartacasa2 = newCarta();
+  casaStatus.cartas.push(cartacasa1);
+  casaStatus.cartas.push(cartacasa2);
+}
 
 /* 
   Crea una carta (numero random 1-52)
@@ -62,68 +78,68 @@ function newCarta() {
 /* 
   Conteo de cartas
 */
-function contarCartas() {}
+function contarCartas() { }
 
 /* 
   verifica si un jugador está en el turno actual
 */
-function verificarJugadorEnTuno(token) {}
+function verificarJugadorEnTuno(token) { }
 
 /* 
   valida que jugador juega despues, o si la casa juega despues
   puede llama funcion jugarCasa()
 */
-function siguienteTurno() {}
+function siguienteTurno() { }
 
 /* 
   juega la casa (despues de q todos jugadores jugaron)
   Casa puede pedir mas cartas, se puede pasar en puntos, etc...
 */
-function jugarCasa() {}
+function jugarCasa() { }
 
 /* 
   Verifica quien Gana al FINAL y devuelve o se queda con la plata de las apuestas
 */
-function verificarQuienGana() {}
+function verificarQuienGana() { }
 
 /* 
   resetea todo, se envia a clientes si ganaron o perdieron
   Se tiene que esperar 20 segundos mostranso los mensajes de fin
   Luego del tiempo se inicia el proceso otra vez
 */
-function terminarJuego() {}
+function terminarJuego() { }
 
 /* 
   PETICION cliente
   Jugador se planta y envia su token de verificacion
   llama a verificarJugadorEnTuno para ver si es su turno
 */
-function plantar(token) {}
+function plantar(token) { }
 
 /* 
   PETICION cliente
   Jugador lo invoca y envia su token de verificacion
   llama a verificarJugadorEnTuno para ver si es su turno
 */
-function cartaCartaAdicional(token) {}
+function cartaCartaAdicional(token) { }
 
 /* 
   PETICION GET cliente
   Devuelve solo una carta de la casa, porque la otra es oculta
 */
-function casaStatusRequest() {}
+function casaStatusRequest() { }
 
 /* 
   PETICION GET cliente
   Retorna el jugador en la pos del array requerida
 */
-function jugadorStatusRequest(posicionEnArray) {}
+function jugadorStatusRequest(posicionEnArray) { }
 
 /* 
   PETICION POST cliente
   Retorna el server status
 */
-function juegoStatusRequest() {}
+function juegoStatusRequest() { }
 
 module.exports = {
   conectarJugador
