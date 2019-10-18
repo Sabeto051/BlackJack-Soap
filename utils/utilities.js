@@ -42,7 +42,9 @@ function conectarJugador(apuesta = 0) {
   cuando se acaba, o cancela porque hay 2 jugadores jugando
   llama a empezarJuego()
 */
-function conteoJuegoInicio() {}
+function conteoJuegoInicio() {
+  let cronometro = setTimeout(empezarJuego, 60000)
+}
 
 /* 
   Reparte y crea las cartas de jugadores y casa
@@ -53,7 +55,9 @@ function empezarJuego() {}
   Crea una carta (numero random 1-52)
   server no pinta carta, lo hace el cliente
 */
-function newCarta() {}
+function newCarta() {
+  let carta = Math.floor(Math.random() * 52 + 1)
+}
 
 /* 
   Conteo de cartas
