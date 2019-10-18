@@ -65,6 +65,10 @@ function empezarJuego() {
   let cartacasa2 = newCarta();
   casaStatus.cartas.push(cartacasa1);
   casaStatus.cartas.push(cartacasa2);
+
+  //actualizar
+  juegoStatus.Comenzado = true;
+  juegoStatus.jugadoresConectados = jugadores.length;
 }
 
 /* 
