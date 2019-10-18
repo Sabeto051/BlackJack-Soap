@@ -111,6 +111,7 @@ function verificarJugadorEnTuno(token) { }
   puede llama funcion jugarCasa()
 */
 function siguienteTurno() {
+  // si el jugador en turno, ya jugo la casa, se acaba el juego
   if (juegoStatus.jugadorEnTurno == -1) {
     terminarJuego()
   }
@@ -127,7 +128,17 @@ function siguienteTurno() {
   juega la casa (despues de q todos jugadores jugaron)
   Casa puede pedir mas cartas, se puede pasar en puntos, etc...
 */
-function jugarCasa() { }
+function jugarCasa() {
+  let puntos = contarCartas(casaStatus.cartas);
+
+  while (puntos < 17) {
+    let cartacasa1 = newCarta()
+    casaStatus.cartas.push(cartacasa1)
+    puntos = contarCartas(casaStatus.cartas);
+  }
+
+  siguienteTurno();
+}
 
 /* 
   Verifica quien Gana al FINAL y devuelve o se queda con la plata de las apuestas
