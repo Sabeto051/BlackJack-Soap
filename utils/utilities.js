@@ -57,7 +57,22 @@ function conteoJuegoInicio() {
 /* 
   Reparte y crea las cartas de jugadores y casa
 */
-function empezarJuego() {}
+function empezarJuego() {
+  //Reparte dos cartas a cada jugador
+  jugadores.forEach(element => {
+    let carta1 = newCarta()
+    let carta2 = newCarta()
+    element.cartas.push(carta1)
+    element.cartas.push(carta2)
+    element.numeroCartas += 2
+  })
+
+  //reparte las dos cartas de la casa
+  let cartacasa1 = newCarta()
+  let cartacasa2 = newCarta()
+  casaStatus.cartas.push(cartacasa1)
+  casaStatus.cartas.push(cartacasa2)
+}
 
 /* 
   Crea una carta (numero random 1-52)
