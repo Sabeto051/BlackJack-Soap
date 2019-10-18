@@ -104,63 +104,74 @@ function contarCartas(cartas) {
 /* 
   verifica si un jugador está en el turno actual
 */
-function verificarJugadorEnTuno(token) {}
+function verificarJugadorEnTuno(token) { }
 
 /* 
   valida que jugador juega despues, o si la casa juega despues
   puede llama funcion jugarCasa()
 */
-function siguienteTurno() {}
+function siguienteTurno() {
+  if (juegoStatus.jugadorEnTurno == -1) {
+    terminarJuego()
+  }
+
+  if (juegoStatus.jugadorEnTurno + 1 == jugadores.length) {
+    juegoStatus.jugadorEnTurno = -1
+    jugarCasa()
+  } else {
+    juegoStatus.jugadorEnTurno++
+  }
+}
 
 /* 
   juega la casa (despues de q todos jugadores jugaron)
   Casa puede pedir mas cartas, se puede pasar en puntos, etc...
 */
-function jugarCasa() {}
+function jugarCasa() { }
 
 /* 
   Verifica quien Gana al FINAL y devuelve o se queda con la plata de las apuestas
 */
-function verificarQuienGana() {}
+function verificarQuienGana() { }
 
 /* 
   resetea todo, se envia a clientes si ganaron o perdieron
   Se tiene que esperar 20 segundos mostranso los mensajes de fin
   Luego del tiempo se inicia el proceso otra vez
 */
-function terminarJuego() {}
+function terminarJuego() { }
 
 /* 
   PETICION cliente
   Jugador se planta y envia su token de verificacion
   llama a verificarJugadorEnTuno para ver si es su turno
 */
-function plantar(token) {}
+function plantar(token) { }
 
 /* 
   PETICION cliente
   Jugador lo invoca y envia su token de verificacion
   llama a verificarJugadorEnTuno para ver si es su turno
 */
-function cartaCartaAdicional(token) {}
+function cartaCartaAdicional(token) { }
 
 /* 
   PETICION GET cliente
   Devuelve solo una carta de la casa, porque la otra es oculta
 */
-function casaStatusRequest() {}
+function casaStatusRequest() { }
 
 /* 
   PETICION GET cliente
   Retorna el jugador en la pos del array requerida
 */
-function jugadorStatusRequest(posicionEnArray) {}
+function jugadorStatusRequest(posicionEnArray) { }
 
 /* 
   PETICION POST cliente
   Retorna el server status
 */
-function juegoStatusRequest() {}
+function juegoStatusRequest() { }
 
 module.exports = {
   conectarJugador
