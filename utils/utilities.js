@@ -330,7 +330,8 @@ function casaStatusRequest() {
   if (juegoStatus.terminado === true) {
     return casaStatus.cartas
   } else {
-    return [casaStatus.cartas[1]]
+    // return [casaStatus.cartas[1]]
+    return [1, 2, 3]
   }
 }
 
@@ -359,10 +360,12 @@ function jugadorStatusRequest() {
   
 */
 function juegoStatusRequest() {
-  return [juegoStatus.Comenzado,
-  juegoStatus.jugadorEnTurno,
-  juegoStatus.jugadoresConectados,
-  juegoStatus.terminado]
+  return {
+    comenzado: juegoStatus.Comenzado,
+    jugadorEnTurno: juegoStatus.jugadorEnTurno,
+    jugadoresConectados: juegoStatus.jugadoresConectados,
+    terminado: juegoStatus.terminado
+  }
 }
 
 /* 

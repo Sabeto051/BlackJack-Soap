@@ -32,6 +32,14 @@
         <wsdl:part name="token" type="xsd:string"></wsdl:part>
     </wsdl:message>
 
+    <!-- casaStatusRequest -->
+    <wsdl:message name="casaStatusRequestRequest">
+        <wsdl:part name="apuesta" type="tns:integer"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="casaStatusRequestResponse">
+        <wsdl:part name="token" type="xsd:string"></wsdl:part>
+    </wsdl:message>
+
     <wsdl:portType name="BlackJackPort">
         <wsdl:operation name="gameStatus">
             <wsdl:input message="tns:gameStatusRequest"/>
