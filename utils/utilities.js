@@ -251,7 +251,7 @@ function terminarJuego() {
 
   juegoStatus.terminado = true
 
-  setTimeout(function() {
+  setTimeout(function () {
     // tiempo muerto
     jugadores = []
     casaStatus.cartas = []
@@ -353,8 +353,14 @@ function jugadorStatusRequest() {
 /* 
   PETICION POST cliente
   Retorna el server status
+
+  TIENE DOS codigos POSIBLES:
+  1 retorna LOS GANADORES
+  cualquier otro es perdedores
 */
-function juegoStatusRequest() {}
+function juegoStatusRequest(code) {
+  return code === 1 ? juegoStatus.tokensGanadores : juegoStatus.tokensPerdedores
+}
 
 module.exports = {
   conectarJugador,
