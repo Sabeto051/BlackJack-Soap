@@ -310,7 +310,20 @@ function casaStatusRequest() {
   PETICION GET cliente
   Retorna el jugador en la pos del array requerida
 */
-function jugadorStatusRequest(posicionEnArray) {}
+function jugadorStatusRequest() {
+  let array = []
+
+  jugadores.forEach(jugador => {
+    let player = {
+      token: jugador.token,
+      apuesta: jugador.apuesta,
+      cartas: jugador.cartas
+    }
+    array.push(player)
+  })
+
+  return array
+}
 
 /* 
   PETICION POST cliente
@@ -321,5 +334,7 @@ function juegoStatusRequest() {}
 module.exports = {
   conectarJugador,
   plantar,
-  casaStatusRequest
+  casaStatusRequest,
+  cartaCartaAdicional,
+  jugadorStatusRequest
 }
