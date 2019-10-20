@@ -354,12 +354,12 @@ function jugadorStatusRequest() {
   PETICION POST cliente
   Retorna el server status
 
-  TIENE DOS RETURNS POSIBLES: 1 O 2
-  1 ES LOS GANADORES
-  2 ES LOS PERDEDORES
+  TIENE DOS codigos POSIBLES:
+  1 retorna LOS GANADORES
+  cualquier otro es perdedores
 */
-function juegoStatusRequest() {
-  return juegoStatus
+function juegoStatusRequest(code) {
+  return code === 1 ? juegoStatus.tokensGanadores : juegoStatus.tokensPerdedores
 }
 
 module.exports = {
