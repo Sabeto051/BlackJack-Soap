@@ -25,27 +25,31 @@ let casaStatus = {
 }
 
 function conectarJugador(apuesta = 0) {
-  let token = tokenizator.randomBytes(20)
-  token = token.toString('hex')
+  if (juegoStatus.Comenzado === false) {
+    let token = tokenizator.randomBytes(20)
+    token = token.toString('hex')
 
-  let player = {
-    token,
-    apuesta,
-    numeroCartas: 0,
-    cartas: [],
-    perdio: false,
-    blackjack: false,
-    posicionEnArray: jugadores.length,
-    plantado: false
+    let player = {
+      token,
+      apuesta,
+      numeroCartas: 0,
+      cartas: [],
+      perdio: false,
+      blackjack: false,
+      posicionEnArray: jugadores.length,
+      plantado: false
+    }
+    jugadores.push(player)
+
+    juegoStatus.jugadoresConectados += 1
+    juegoStatus.juegoComenzado = true
+
+    // SE empieza el CONTEO
+
+    return token
+  } else {
+    return 'Error'
   }
-  jugadores.push(player)
-
-  juegoStatus.jugadoresConectados += 1
-  juegoStatus.juegoComenzado = true
-
-  // SE empieza el CONTEO
-
-  return token
 }
 
 /* 
@@ -245,6 +249,8 @@ function terminarJuego() {
     }
   })
 
+  juegoStatus.terminado = true
+
   setTimeout(function() {
     // tiempo muerto
     jugadores = []
@@ -254,7 +260,7 @@ function terminarJuego() {
     juegoStatus.jugadorEnTurno = null
     juegoStatus.terminado = false
 
-    empezarJuego()
+    // empezarJuego()
   }, 20000)
 }
 
@@ -292,7 +298,13 @@ function cartaCartaAdicional(token) {}
   PETICION GET cliente
   Devuelve solo una carta de la casa, porque la otra es oculta
 */
-function casaStatusRequest() {}
+function casaStatusRequest() {
+  if (juegoStatus.terminado === true) {
+    return casaStatus.cartas
+  } else {
+    return [casaStatus.cartas[1]]
+  }
+}
 
 /* 
   PETICION GET cliente
@@ -307,5 +319,7 @@ function jugadorStatusRequest(posicionEnArray) {}
 function juegoStatusRequest() {}
 
 module.exports = {
-  conectarJugador
+  conectarJugador,
+  plantar,
+  casaStatusRequest
 }
