@@ -245,7 +245,7 @@ function terminarJuego() {
     }
   })
 
-  setTimeout(function() {
+  setTimeout(function () {
     // tiempo muerto
     jugadores = []
     casaStatus.cartas = []
@@ -285,26 +285,49 @@ function plantar(token) {
   PETICION cliente
   Jugador lo invoca y envia su token de verificacion
   llama a verificarJugadorEnTuno para ver si es su turno
+
 */
-function cartaCartaAdicional(token) {}
+function cartaCartaAdicional(token) {
+  let turno = verificarJugadorEnTuno(token)
+
+  if (turno) {  //garantizar que es su turno
+    for (let index = 0; index < jugadores.length; index++) {
+      if (jugadores[index].token === token) {
+        jugadores[index].cartas.push(newCarta());  //agregar nueva carta
+        let total = contarCartas(jugadores[index].cartas)  //revisar total suma
+
+        if (total > 21) {  //si ya perdio, pasar de turno e informar usuario que la cago
+          console.log("la pifiaste");
+          siguienteTurno()
+
+          return 'Perdiste'
+        }
+
+        return 'Carta agregada con exito'
+      }
+    }
+  } else {
+    return 'No es tu turno'
+  }
+}
 
 /* 
   PETICION GET cliente
   Devuelve solo una carta de la casa, porque la otra es oculta
 */
-function casaStatusRequest() {}
+function casaStatusRequest() { }
 
 /* 
   PETICION GET cliente
   Retorna el jugador en la pos del array requerida
 */
-function jugadorStatusRequest(posicionEnArray) {}
+function jugadorStatusRequest(posicionEnArray) { }
 
 /* 
   PETICION POST cliente
   Retorna el server status
 */
-function juegoStatusRequest() {}
+function juegoStatusRequest() { }
 
 module.exports = {
   conectarJugador
