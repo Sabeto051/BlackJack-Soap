@@ -355,13 +355,25 @@ function jugadorStatusRequest() {
 
 /* 
   PETICION POST cliente
-  Retorna el server status
+  Retorna informacion actual del juego
+  
+*/
+function juegoStatusRequest() {
+  return [juegoStatus.Comenzado,
+  juegoStatus.jugadorEnTurno,
+  juegoStatus.jugadoresConectados,
+  juegoStatus.terminado]
+}
+
+/* 
+  PETICION POST cliente
 
   TIENE DOS codigos POSIBLES:
   1 retorna LOS GANADORES
   cualquier otro es perdedores
 */
-function juegoStatusRequest(code) {
+
+function ganadoresRequest(code) {
   return code === 1 ? juegoStatus.tokensGanadores : juegoStatus.tokensPerdedores
 }
 
@@ -371,5 +383,6 @@ module.exports = {
   cartaCartaAdicional,
   casaStatusRequest,
   jugadorStatusRequest,
-  juegoStatusRequest
+  juegoStatusRequest,
+  ganadoresRequest
 }
