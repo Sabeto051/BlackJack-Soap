@@ -344,5 +344,8 @@ function juegoStatusRequest() { }
 module.exports = {
   conectarJugador,
   plantar,
-  casaStatusRequest
+  cartaCartaAdicional,
+  casaStatusRequest,
+  jugadorStatusRequest,
+  juegoStatusRequest
 }
