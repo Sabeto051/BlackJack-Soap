@@ -167,18 +167,24 @@ function verificarQuienGana() {
   let i = 0;
   let totales = []
   jugadores.forEach(jugador => {  //para cada jugador calcular el total
-    totales.append(0);
+
+    totales.append(contarCartas(jugador.cartas));
+    /*
+    totales.append(0); 
     jugador.cartas.forEach(carta => { //para carta del jugador sumarla al total
       total[i] += carta.valor
-    })
+    }) */
     i++;
   })
 
+
+  let totalcasa = contarCartas(casaStatus.cartas);
+  /*
   let totalcasa = 0;
 
   casaStatus.cartas.forEach(carta => { //calcular total de la casa
     totalcasa += carta.valor
-  })
+  }) */
 
   i = 0;
   jugadores.forEach(jugador => {  //para cada jugador revisar si perdio, empato o gano
@@ -207,7 +213,30 @@ function verificarQuienGana() {
   Se tiene que esperar 20 segundos mostranso los mensajes de fin
   Luego del tiempo se inicia el proceso otra vez
 */
-function terminarJuego() { }
+function terminarJuego() {
+  verificarQuienGana()
+
+  jugadores.forEach(jugador => {  //informar que cada jugador perdio (un poco reduntante)
+    if (jugador.perdio) {
+      console.log(jugador.token + " perdio! La pifiaste, men");
+    } else {
+      console.log(jugador.token + " gano! Buena la rata");
+    }
+  })
+
+  setTimeout(function () { // tiempo muerto
+    jugadores = [];
+    casaStatus.cartas = []
+    juegoStatus.Comenzado = false
+    juegoStatus.jugadoresConectados = 0
+    juegoStatus.jugadorEnTurno = null
+    juegoStatus.terminado = false
+
+    empezarJuego();
+
+  }, 20000);
+
+}
 
 /* 
   PETICION cliente
