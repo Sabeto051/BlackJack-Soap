@@ -296,14 +296,16 @@ function plantar(token) {
 function cartaCartaAdicional(token) {
   let turno = verificarJugadorEnTuno(token)
 
-  if (turno) {  //garantizar que es su turno
+  if (turno) {
+    //garantizar que es su turno
     for (let index = 0; index < jugadores.length; index++) {
       if (jugadores[index].token === token) {
-        jugadores[index].cartas.push(newCarta());  //agregar nueva carta
-        let total = contarCartas(jugadores[index].cartas)  //revisar total suma
+        jugadores[index].cartas.push(newCarta()) //agregar nueva carta
+        let total = contarCartas(jugadores[index].cartas) //revisar total suma
 
-        if (total > 21) {  //si ya perdio, pasar de turno e informar usuario que la cago
-          console.log("la pifiaste");
+        if (total > 21) {
+          //si ya perdio, pasar de turno e informar usuario que la cago
+          console.log('la pifiaste')
           siguienteTurno()
 
           return 'Perdiste'
@@ -333,7 +335,20 @@ function casaStatusRequest() {
   PETICION GET cliente
   Retorna el jugador en la pos del array requerida
 */
-function jugadorStatusRequest(posicionEnArray) { }
+function jugadorStatusRequest() {
+  let array = []
+
+  jugadores.forEach(jugador => {
+    let player = {
+      token: jugador.token,
+      apuesta: jugador.apuesta,
+      cartas: jugador.cartas
+    }
+    array.push(player)
+  })
+
+  return array
+}
 
 /* 
   PETICION POST cliente
