@@ -124,7 +124,20 @@ function contarCartas(cartas) {
 /* 
   verifica si un jugador está en el turno actual
 */
-function verificarJugadorEnTuno(token) { }
+function verificarJugadorEnTuno(token) {
+  let posJugEnTurno = juegoStatus.jugadorEnTurno
+
+  if (posJugEnTurno !== -1) {
+    let jugEnTurno = jugadores[posJugEnTurno]
+    if (token === jugEnTurno.token) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  return false
+}
 
 /* 
   valida que jugador juega despues, o si la casa juega despues
@@ -149,22 +162,22 @@ function siguienteTurno() {
   Casa puede pedir mas cartas, se puede pasar en puntos, etc...
 */
 function jugarCasa() {
-  let puntos = contarCartas(casaStatus.cartas);
+  let puntos = contarCartas(casaStatus.cartas)
 
   while (puntos < 17) {
     let cartacasa1 = newCarta()
     casaStatus.cartas.push(cartacasa1)
-    puntos = contarCartas(casaStatus.cartas);
+    puntos = contarCartas(casaStatus.cartas)
   }
 
-  siguienteTurno();
+  siguienteTurno()
 }
 
 /* 
   Verifica quien Gana al FINAL y devuelve o se queda con la plata de las apuestas
 */
 function verificarQuienGana() {
-  let i = 0;
+  let i = 0
   let totales = []
   jugadores.forEach(jugador => {  //para cada jugador calcular el total
 
@@ -182,29 +195,31 @@ function verificarQuienGana() {
   /*
   let totalcasa = 0;
 
-  casaStatus.cartas.forEach(carta => { //calcular total de la casa
+  casaStatus.cartas.forEach(carta => {
+    //calcular total de la casa
     totalcasa += carta.valor
   }) */
 
-  i = 0;
-  jugadores.forEach(jugador => {  //para cada jugador revisar si perdio, empato o gano
+  i = 0
+  jugadores.forEach(jugador => {
+    //para cada jugador revisar si perdio, empato o gano
     if (totales[i] <= 21) {
       if (totales[i] > totalcasa) {
-        console.log("jugador " + i + " gano!")
+        console.log('jugador ' + i + ' gano!')
       } else {
-        if (totales[i] = totalcasa) {
-          console.log("jugador " + i + " empata con la casa")
-          jugador.perdio = true;
+        if ((totales[i] = totalcasa)) {
+          console.log('jugador ' + i + ' empata con la casa')
+          jugador.perdio = true
         } else {
-          console.log("jugador " + i + " perdio!")
-          jugador.perdio = true;
+          console.log('jugador ' + i + ' perdio!')
+          jugador.perdio = true
         }
       }
     } else {
-      console.log("jugador " + i + " se paso y perdio!")
-      jugador.perdio = true;
+      console.log('jugador ' + i + ' se paso y perdio!')
+      jugador.perdio = true
     }
-    i++;
+    i++
   })
 }
 
