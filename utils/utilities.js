@@ -124,7 +124,20 @@ function contarCartas(cartas) {
 /* 
   verifica si un jugador está en el turno actual
 */
-function verificarJugadorEnTuno(token) { }
+function verificarJugadorEnTuno(token) {
+  let posJugEnTurno = juegoStatus.jugadorEnTurno
+
+  if (posJugEnTurno !== -1) {
+    let jugEnTurno = jugadores[posJugEnTurno]
+    if (token === jugEnTurno.token) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  return false
+}
 
 /* 
   valida que jugador juega despues, o si la casa juega despues
@@ -149,60 +162,60 @@ function siguienteTurno() {
   Casa puede pedir mas cartas, se puede pasar en puntos, etc...
 */
 function jugarCasa() {
-  let puntos = contarCartas(casaStatus.cartas);
+  let puntos = contarCartas(casaStatus.cartas)
 
   while (puntos < 17) {
     let cartacasa1 = newCarta()
     casaStatus.cartas.push(cartacasa1)
-    puntos = contarCartas(casaStatus.cartas);
+    puntos = contarCartas(casaStatus.cartas)
   }
 
-  siguienteTurno();
+  siguienteTurno()
 }
 
 /* 
   Verifica quien Gana al FINAL y devuelve o se queda con la plata de las apuestas
 */
-function verificarQuienGana() { }
+function verificarQuienGana() {}
 
 /* 
   resetea todo, se envia a clientes si ganaron o perdieron
   Se tiene que esperar 20 segundos mostranso los mensajes de fin
   Luego del tiempo se inicia el proceso otra vez
 */
-function terminarJuego() { }
+function terminarJuego() {}
 
 /* 
   PETICION cliente
   Jugador se planta y envia su token de verificacion
   llama a verificarJugadorEnTuno para ver si es su turno
 */
-function plantar(token) { }
+function plantar(token) {}
 
 /* 
   PETICION cliente
   Jugador lo invoca y envia su token de verificacion
   llama a verificarJugadorEnTuno para ver si es su turno
 */
-function cartaCartaAdicional(token) { }
+function cartaCartaAdicional(token) {}
 
 /* 
   PETICION GET cliente
   Devuelve solo una carta de la casa, porque la otra es oculta
 */
-function casaStatusRequest() { }
+function casaStatusRequest() {}
 
 /* 
   PETICION GET cliente
   Retorna el jugador en la pos del array requerida
 */
-function jugadorStatusRequest(posicionEnArray) { }
+function jugadorStatusRequest(posicionEnArray) {}
 
 /* 
   PETICION POST cliente
   Retorna el server status
 */
-function juegoStatusRequest() { }
+function juegoStatusRequest() {}
 
 module.exports = {
   conectarJugador
