@@ -176,7 +176,48 @@ function jugarCasa() {
 /* 
   Verifica quien Gana al FINAL y devuelve o se queda con la plata de las apuestas
 */
-function verificarQuienGana() {}
+function verificarQuienGana() {
+  let i = 0
+  let totales = []
+  jugadores.forEach(jugador => {
+    //para cada jugador calcular el total
+    totales.append(0)
+    jugador.cartas.forEach(carta => {
+      //para carta del jugador sumarla al total
+      total[i] += carta.valor
+    })
+    i++
+  })
+
+  let totalcasa = 0
+
+  casaStatus.cartas.forEach(carta => {
+    //calcular total de la casa
+    totalcasa += carta.valor
+  })
+
+  i = 0
+  jugadores.forEach(jugador => {
+    //para cada jugador revisar si perdio, empato o gano
+    if (totales[i] <= 21) {
+      if (totales[i] > totalcasa) {
+        console.log('jugador ' + i + ' gano!')
+      } else {
+        if ((totales[i] = totalcasa)) {
+          console.log('jugador ' + i + ' empata con la casa')
+          jugador.perdio = true
+        } else {
+          console.log('jugador ' + i + ' perdio!')
+          jugador.perdio = true
+        }
+      }
+    } else {
+      console.log('jugador ' + i + ' se paso y perdio!')
+      jugador.perdio = true
+    }
+    i++
+  })
+}
 
 /* 
   resetea todo, se envia a clientes si ganaron o perdieron
