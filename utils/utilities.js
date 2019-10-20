@@ -15,7 +15,9 @@ let juegoStatus = {
   Comenzado: false,
   jugadoresConectados: 0,
   jugadorEnTurno: null, // posicion en array, casa es jugador -1
-  terminado: false
+  terminado: false,
+  tokensGanadores: [],
+  tokensPerdedores: []
 }
 
 let casaStatus = {
@@ -234,8 +236,11 @@ function terminarJuego() {
   jugadores.forEach(jugador => {  //informar que cada jugador perdio (un poco reduntante)
     if (jugador.perdio) {
       console.log(jugador.token + " perdio! La pifiaste, men");
+      juegoStatus.tokensGanadores.push(jugador.token) //agregar token de ganadores a array
     } else {
       console.log(jugador.token + " gano! Buena la rata");
+      juegoStatus.tokensGanadores.push(jugador.token) //agregar token de perdedores a array
+
     }
   })
 
