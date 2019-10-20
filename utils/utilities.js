@@ -283,7 +283,7 @@ function plantar(token) {
       }
     }
   } else {
-    return 'No es tu turno'
+    return 'Error'
   }
 }
 
