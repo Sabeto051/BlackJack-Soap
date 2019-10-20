@@ -92,7 +92,7 @@ function newCarta() {
 */
 function contarCartas(cartas) {
   let suma = 0
-  let ases = 0
+  let ases = 0 // numero de ases con valor 11
   let contador = carta => {
     suma += carta.valor
   }
@@ -102,7 +102,7 @@ function contarCartas(cartas) {
     }
   }
 
-  cc.map(contador)
+  cartas.map(contador)
 
   if (suma > 21) {
     cartas.map(numAses)
@@ -114,6 +114,7 @@ function contarCartas(cartas) {
         ases--
         cartas.map(contador)
       }
+
       i++
     }
   }
@@ -231,7 +232,23 @@ function terminarJuego() {}
   Jugador se planta y envia su token de verificacion
   llama a verificarJugadorEnTuno para ver si es su turno
 */
-function plantar(token) {}
+function plantar(token) {
+  // Miro si el pana esta en turno
+  let turno = verificarJugadorEnTuno(token)
+
+  if (turno) {
+    for (let index = 0; index < jugadores.length; index++) {
+      if (jugadores[index].token === token) {
+        jugadores[index].plantado = true
+        siguienteTurno()
+
+        return 'Plantado con exito'
+      }
+    }
+  } else {
+    return 'No es tu turno'
+  }
+}
 
 /* 
   PETICION cliente
