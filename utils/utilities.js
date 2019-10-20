@@ -338,8 +338,14 @@ function jugadorStatusRequest(posicionEnArray) { }
 /* 
   PETICION POST cliente
   Retorna el server status
+
+  TIENE DOS RETURNS POSIBLES: 1 O 2
+  1 ES LOS GANADORES
+  2 ES LOS PERDEDORES
 */
-function juegoStatusRequest() { }
+function juegoStatusRequest() {
+  return juegoStatus
+}
 
 module.exports = {
   conectarJugador,
