@@ -15,7 +15,9 @@ let juegoStatus = {
   Comenzado: false,
   jugadoresConectados: 0,
   jugadorEnTurno: null, // posicion en array, casa es jugador -1
-  terminado: false
+  terminado: false,
+  tokensGanadores: [],
+  tokensPerdedores: []
 }
 
 let casaStatus = {
@@ -180,22 +182,26 @@ function jugarCasa() {
 function verificarQuienGana() {
   let i = 0
   let totales = []
-  jugadores.forEach(jugador => {
-    //para cada jugador calcular el total
-    totales.append(0)
-    jugador.cartas.forEach(carta => {
-      //para carta del jugador sumarla al total
+  jugadores.forEach(jugador => {  //para cada jugador calcular el total
+
+    totales.append(contarCartas(jugador.cartas));
+    /*
+    totales.append(0); 
+    jugador.cartas.forEach(carta => { //para carta del jugador sumarla al total
       total[i] += carta.valor
-    })
-    i++
+    }) */
+    i++;
   })
 
-  let totalcasa = 0
+
+  let totalcasa = contarCartas(casaStatus.cartas);
+  /*
+  let totalcasa = 0;
 
   casaStatus.cartas.forEach(carta => {
     //calcular total de la casa
     totalcasa += carta.valor
-  })
+  }) */
 
   i = 0
   jugadores.forEach(jugador => {
@@ -225,13 +231,40 @@ function verificarQuienGana() {
   Se tiene que esperar 20 segundos mostranso los mensajes de fin
   Luego del tiempo se inicia el proceso otra vez
 */
-function terminarJuego() {}
+function terminarJuego() {
+  verificarQuienGana()
+
+  jugadores.forEach(jugador => {  //informar que cada jugador perdio (un poco reduntante)
+    if (jugador.perdio) {
+      console.log(jugador.token + " perdio! La pifiaste, men");
+      juegoStatus.tokensGanadores.push(jugador.token) //agregar token de ganadores a array
+    } else {
+      console.log(jugador.token + " gano! Buena la rata");
+      juegoStatus.tokensGanadores.push(jugador.token) //agregar token de perdedores a array
+
+    }
+  })
+
+  setTimeout(function () { // tiempo muerto
+    jugadores = [];
+    casaStatus.cartas = []
+    juegoStatus.Comenzado = false
+    juegoStatus.jugadoresConectados = 0
+    juegoStatus.jugadorEnTurno = null
+    juegoStatus.terminado = false
+
+    empezarJuego();
+
+  }, 20000);
+
+}
 
 /* 
   PETICION cliente
   Jugador se planta y envia su token de verificacion
   llama a verificarJugadorEnTuno para ver si es su turno
 */
+<<<<<<< HEAD
 function plantar(token) {
   // Miro si el pana esta en turno
   let turno = verificarJugadorEnTuno(token)
@@ -249,31 +282,34 @@ function plantar(token) {
     return 'No es tu turno'
   }
 }
+=======
+function plantar(token) { }
+>>>>>>> 07badad23b0ae337726b335f53261ebfdd6f884a
 
 /* 
   PETICION cliente
   Jugador lo invoca y envia su token de verificacion
   llama a verificarJugadorEnTuno para ver si es su turno
 */
-function cartaCartaAdicional(token) {}
+function cartaCartaAdicional(token) { }
 
 /* 
   PETICION GET cliente
   Devuelve solo una carta de la casa, porque la otra es oculta
 */
-function casaStatusRequest() {}
+function casaStatusRequest() { }
 
 /* 
   PETICION GET cliente
   Retorna el jugador en la pos del array requerida
 */
-function jugadorStatusRequest(posicionEnArray) {}
+function jugadorStatusRequest(posicionEnArray) { }
 
 /* 
   PETICION POST cliente
   Retorna el server status
 */
-function juegoStatusRequest() {}
+function juegoStatusRequest() { }
 
 module.exports = {
   conectarJugador
