@@ -41,10 +41,13 @@ function conectarJugador(apuesta = 0) {
     }
     jugadores.push(player)
 
+    // SE empieza el CONTEO
+    if (juegoStatus.jugadoresConectados === 0) {
+      conteoJuegoInicio()
+    }
+
     juegoStatus.jugadoresConectados += 1
     juegoStatus.juegoComenzado = true
-
-    // SE empieza el CONTEO
 
     return token
   } else {
@@ -251,7 +254,7 @@ function terminarJuego() {
 
   juegoStatus.terminado = true
 
-  setTimeout(function () {
+  setTimeout(function() {
     // tiempo muerto
     jugadores = []
     casaStatus.cartas = []
